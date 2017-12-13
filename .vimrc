@@ -24,8 +24,10 @@
 "	ctrl+w <keyarrow>	Move to a splited-screen
 "
 
-"Run code
+"Some utils
 "	:w !python		Run the current python file
+"
+"	:w !sudo tee %		Save the file if read-only
 
 "*** CONFIG ***
 set incsearch	"incremental search
