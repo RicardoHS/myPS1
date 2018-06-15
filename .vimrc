@@ -4,6 +4,7 @@
 "	<F7>			Previus Tab
 "	<F8>			Next Tab
 "	<F9>			New empty Tab
+"	<F12>			Copy to clipboard	
 
 "Tabs
 "	:tabnew <name>		Open a new file in a new tab
@@ -40,6 +41,7 @@ set mouse+=a
 map <F7> :tabp <CR>
 map <F8> :tabn <CR>
 map <F9> :tabnew <CR>
+map <F12> :w !xclip -i -sel c <CR>
 
 "vert sview means vertical view (read-only)
 map <F2> :vert sview ~/.vimrc <CR>
