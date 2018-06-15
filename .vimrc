@@ -34,6 +34,7 @@ set incsearch	"incremental search
 set hlsearch	"highlight the search
 set nu		"show line number
 set relativenumber 
+set mouse+=a
 
 "*** MAPING
 map <F7> :tabp <CR>
