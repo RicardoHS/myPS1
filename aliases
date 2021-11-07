@@ -1,0 +1,2 @@
+alias l="ls -lSh --color"
+alias la="ls -lSha --color"
