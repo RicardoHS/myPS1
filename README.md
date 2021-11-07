@@ -4,6 +4,9 @@ Linux bash prompt style
 
 Add to .bashrc and enjoy.
 
+# Also htop configuration
+Copy the file and the folder structure to your $HOME
+
 
 # Also a .vimrc file with a cheat sheet in it
 Add to your home
