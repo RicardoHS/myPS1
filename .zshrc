@@ -10,6 +10,11 @@ fi
 
 source /Users/ricardo.hortelano@feverup.com/antigen.zsh
 
+# For Macos iTerm2
+# Allow to move one word prev/next with option+arrow
+bindkey "\e\e[D" backward-word
+bindkey "\e\e[C" forward-word
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
