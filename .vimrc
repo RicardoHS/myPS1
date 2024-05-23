@@ -25,5 +25,12 @@ Plug 'jremmen/vim-ripgrep'
 
 call plug#end()
 
+" MAPPINGS
+"set Leader to be º
+let mapleader ="º"
+
 "map fzf to Ctrl-f
 nnoremap <silent> <C-f> :Files<CR>
+"map ripgrep to \+f
+nnoremap <silent> <Leader>f :Rg<CR>
+
