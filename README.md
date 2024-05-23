@@ -9,6 +9,10 @@ Copy the file and the folder structure to your $HOME
 
 
 # Also a .vimrc file with a cheat sheet in it
+
+ - Install [fzf](https://github.com/junegunn/fzf) 
+ - Install [ripgrep](https://github.com/BurntSushi/ripgrep)
+
 Add to your home
 
 # Also a .zshrc file with myconf
