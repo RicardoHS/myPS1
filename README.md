@@ -17,8 +17,9 @@ Add to your home
 
 # Also a .zshrc file with myconf
 
- - Install [fzf](https://github.com/junegunn/fzf) and [fd](https://github.com/sharkdp/fd)
+ - Install [oh-my-zsh](https://ohmyz.sh/#install)
  - Install [antigen](https://github.com/zsh-users/antigen)
+ - Install [fzf](https://github.com/junegunn/fzf) and [fd](https://github.com/sharkdp/fd)
 
 Add to your home
 
