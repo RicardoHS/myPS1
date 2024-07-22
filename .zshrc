@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-source /Users/ricardo.hortelano@feverup.com/antigen.zsh
+source /Users/ricardo/antigen.zsh
 
 # For Macos iTerm2
 # Allow to move one word prev/next with option+arrow
@@ -21,8 +21,8 @@ bindkey "\e\e[C" forward-word
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -94,6 +94,7 @@ antigen bundle docker-compose
 #antigen bundle zsh-users/zsh-completions
 #antigen bundle marlonrichert/zsh-autocomplete@main
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme romkatv/powerlevel10k
 
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -125,6 +126,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 antigen apply 
+
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
