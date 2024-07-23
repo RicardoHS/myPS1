@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-source /Users/ricardo/antigen.zsh
+source $HOME/antigen.zsh
 
 # For Macos iTerm2
 # Allow to move one word prev/next with option+arrow
