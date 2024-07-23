@@ -18,6 +18,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+set updatetime=750
+
 call plug#begin()
 
 " List your VIM plugins here
@@ -25,10 +27,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jremmen/vim-ripgrep'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'sheerun/vim-polyglot'
-" List your NVIM plugins here
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 ":TSInstall <language_to_install>
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 " MAPPINGS
