@@ -26,13 +26,22 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
+vim.g.mapleader = "§"
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
 	    -- add your plugins here
+	    { "junegunn/fzf", build = "./install --bin" },
+	    {"ibhagwan/fzf-lua",
+		  -- optional for icon support
+		  dependencies = { "nvim-tree/nvim-web-devicons" },
+		  config = function()
+		    -- calling `setup` is optional for customization
+		    require("fzf-lua").setup({})
+		  end
+		},
 	    {
 	  "yetone/avante.nvim",
 	  event = "VeryLazy",

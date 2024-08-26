@@ -23,8 +23,8 @@ set updatetime=750
 call plug#begin()
 
 " List your VIM plugins here
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jremmen/vim-ripgrep'
 Plug 'ludovicchabant/vim-gutentags'
 "Plug 'sheerun/vim-polyglot'
@@ -45,10 +45,12 @@ map <silent> <C-l> :ccl<CR>
 "let g:python_highlight_all = 1
 
 "map fzf to Ctrl-f
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-f> :RG<CR>
+"nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <silent> <C-f> <cmd>lua require('fzf-lua').grep_project()<CR>
 "map ripgrep to \+f
-nnoremap <silent> <Leader>f :Rg <CR>
+nnoremap <silent> <C-S-f> <cmd>lua require('fzf-lua').grep_cword()<CR>
+"nnoremap <silent> <Leader>f :Rg <CR>
 
 "gutentags configuration
 set statusline+=%{gutentags#statusline()}
