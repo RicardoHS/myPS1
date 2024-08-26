@@ -28,15 +28,13 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jremmen/vim-ripgrep'
 Plug 'ludovicchabant/vim-gutentags'
 "Plug 'sheerun/vim-polyglot'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 ":TSInstall <language_to_install>
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 " MAPPINGS
-"set Leader to be º
-let mapleader ="`"
 " navigate on the quickfix list
 map <silent> <C-j> :cn<CR>
 map <silent> <C-k> :cp<CR>
@@ -44,7 +42,7 @@ map <silent> <C-h> :cw<CR>
 map <silent> <C-l> :ccl<CR>
 
 " Polyglot
-let g:python_highlight_all = 1
+"let g:python_highlight_all = 1
 
 "map fzf to Ctrl-f
 nnoremap <silent> <C-p> :Files<CR>
