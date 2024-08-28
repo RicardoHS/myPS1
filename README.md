@@ -12,6 +12,8 @@ Copy the file and the folder structure to your $HOME
 
  - Install [fzf](https://github.com/junegunn/fzf) 
  - Install [ripgrep](https://github.com/BurntSushi/ripgrep)
+ - Install [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+ - Install [neovide](https://neovide.dev/installation.html)
 
 Add to your home
 
