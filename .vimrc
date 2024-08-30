@@ -51,6 +51,7 @@ nnoremap <silent> <C-f> <cmd>lua require('fzf-lua').grep_project()<CR>
 "map ripgrep to \+f
 nnoremap <silent> <C-S-f> <cmd>lua require('fzf-lua').grep_cword()<CR>
 "nnoremap <silent> <Leader>f :Rg <CR>
+tnoremap <Esc> <C-\><C-n>
 
 "gutentags configuration
 set statusline+=%{gutentags#statusline()}

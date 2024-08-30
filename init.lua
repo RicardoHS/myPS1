@@ -6,6 +6,23 @@ require('lspconfig').ruff.setup {
 }
 
 
+if vim.g.neovide then
+  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+end
+
+-- Allow clipboard copy paste in neovim
+vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+
+
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -34,6 +51,11 @@ require("lazy").setup({
   spec = {
 	    -- add your plugins here
 	    { "junegunn/fzf", build = "./install --bin" },
+	    { 'gen740/SmoothCursor.nvim',
+		  config = function()
+		    require('smoothcursor').setup()
+		  end
+		},
 	    {"ibhagwan/fzf-lua",
 		  -- optional for icon support
 		  dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -42,6 +64,18 @@ require("lazy").setup({
 		    require("fzf-lua").setup({})
 		  end
 		},
+		{
+		  "HakonHarnes/img-clip.nvim",
+		  event = "VeryLazy",
+		  opts = {
+		    -- add options here
+		    -- or leave it empty to use the default settings
+		  },
+		  keys = {
+		    -- suggested keymap
+		    { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+		  },
+		},
 	    {
 	  "yetone/avante.nvim",
 	  event = "VeryLazy",
@@ -49,7 +83,7 @@ require("lazy").setup({
 	  opts = {
 	    -- add any opts here
 	  },
-	  dependencies = {
+	    dependencies = {
 	    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
 	    "stevearc/dressing.nvim",
 	    "nvim-lua/plenary.nvim",
@@ -69,6 +103,7 @@ require("lazy").setup({
 	    build = ":TSUpdate",
 	    config = function () 
 	      local configs = require("nvim-treesitter.configs")
+
 
 	      configs.setup({
 		  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
