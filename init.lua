@@ -1,11 +1,6 @@
 local vimrc = vim.fn.stdpath("config") .. "/initrc.vim"
 vim.cmd.source(vimrc)
 
-require('lspconfig').ruff.setup {
-  cmd_env = { RUFF_TRACE = "messages" }
-}
-
-
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
@@ -20,7 +15,6 @@ vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-
 
 
 -- Bootstrap lazy.nvim
@@ -50,6 +44,12 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
 	    -- add your plugins here
+	    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	    {'jremmen/vim-ripgrep'},
+	    {'ludovicchabant/vim-gutentags'},
+	    {'nvim-treesitter/nvim-treesitter-refactor'},
+	    {'neovim/nvim-lspconfig'},
+	    {'sindrets/diffview.nvim'},
 	    { "junegunn/fzf", build = "./install --bin" },
 	    { 'gen740/SmoothCursor.nvim',
 		  config = function()
@@ -166,4 +166,13 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+require('lspconfig').ruff.setup {
+  cmd_env = { RUFF_TRACE = "messages" }
+}
+
+local ok, _ = pcall(vim.cmd, 'colorscheme catppuccin-mocha')
+if not ok then
+  vim.cmd 'colorscheme default' -- if the above fails, then use default
+end
 
