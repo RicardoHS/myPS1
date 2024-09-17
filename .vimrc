@@ -3,6 +3,8 @@ set incsearch	"incremental search
 set hlsearch	"highlight the search
 set nu		"show line number
 set relativenumber 
+set splitbelow
+set splitright
 
 syntax enable
 filetype plugin indent on
