@@ -53,6 +53,9 @@ nnoremap <silent> <C-f> <cmd>lua require('fzf-lua').grep_project()<CR>
 nnoremap <silent> <C-S-f> <cmd>lua require('fzf-lua').grep_cword()<CR>
 "nnoremap <silent> <Leader>f :Rg <CR>
 tnoremap <Esc> <C-\><C-n>
+nnoremap <silent> <C-,> :DiffviewOpen <CR>
+nnoremap <silent> <C-.> :DiffviewFileHistory <CR>
+nnoremap <silent> <C-/> :DiffviewClose <CR>
 
 "gutentags configuration
 set statusline+=%{gutentags#statusline()}
