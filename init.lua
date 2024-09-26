@@ -197,7 +197,11 @@ require('lspconfig').ruff.setup {
   cmd_env = { RUFF_TRACE = "messages" }
 }
 
-require('lualine').setup()
+require('lualine').setup {
+  sections = {
+    lualine_c = {{'filename', path = 1}},
+  },
+}
 
 local ok, _ = pcall(vim.cmd, 'colorscheme catppuccin-mocha')
 if not ok then
