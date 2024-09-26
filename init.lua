@@ -51,6 +51,9 @@ require("lazy").setup({
 	    {'neovim/nvim-lspconfig'},
 	    {'sindrets/diffview.nvim'},
 	    { "junegunn/fzf", build = "./install --bin" },
+	    {	'nvim-lualine/lualine.nvim',
+	    	dependencies = { 'nvim-tree/nvim-web-devicons' }
+	    },
 	    { 'gen740/SmoothCursor.nvim',
 		  config = function()
 		    require('smoothcursor').setup()
