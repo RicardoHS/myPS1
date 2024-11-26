@@ -35,6 +35,11 @@ command=/home/ricardo/.config/i3blocks/gpu-load/gpu-load -w 90 -c 98
 label=GPU
 interval=1
 
+[temperatures]
+command=echo "GPU: $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader)°C"
+label=
+interval=1
+
 [cpu_usage]
 command=/home/ricardo/.config/i3blocks/cpu_usage/cpu_usage
 markup=pango
