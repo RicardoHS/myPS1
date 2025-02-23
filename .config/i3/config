@@ -27,6 +27,11 @@ exec --no-startup-id dex --autostart --environment i3
 # Wallapaper
 exec --no-startup-id feh --no-fehbg --bg-fill --fullscreen '/home/ricardo/wallpaper.jpg'
 
+# Set shotcut to change keyboard between spanish and english with ctrl+shift
+exec_always "setxkbmap -model pc105 -layout us,es -variant , -option grp:alt_shift_toggle"
+#exec "setxkbmap -layout us,es"
+#exec "setxkbmap -option 'grp:alt_shift_toggle'"
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 

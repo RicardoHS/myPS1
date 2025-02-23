@@ -1,6 +1,9 @@
 local vimrc = vim.fn.stdpath("config") .. "/initrc.vim"
 vim.cmd.source(vimrc)
 
+-- Tabs shows as 3 spaces
+vim.o.tabstop = 3
+
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
@@ -37,7 +40,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = "§"
+vim.g.mapleader = "`"
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
@@ -48,6 +51,8 @@ require("lazy").setup({
 	    {'jremmen/vim-ripgrep'},
 	    {'ludovicchabant/vim-gutentags'},
 	    {'nvim-treesitter/nvim-treesitter-refactor'},
+		 {"williamboman/mason.nvim"},
+		 {"williamboman/mason-lspconfig.nvim"},
 	    {'neovim/nvim-lspconfig'},
 	    {'sindrets/diffview.nvim'},
 	    { "junegunn/fzf", build = "./install --bin" },
@@ -193,9 +198,23 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "clangd",        -- C/C++
+        "rust_analyzer", -- Rust
+        "lua_ls",        -- Lua
+    }
+})
+
 require('lspconfig').ruff.setup {
   cmd_env = { RUFF_TRACE = "messages" }
 }
+require('lspconfig').clangd.setup{}  -- Para C/C++
+-- Format with LSP
+vim.keymap.set('n', '<leader>f', function()
+    vim.lsp.buf.format({ async = true })
+end)
 
 require('lualine').setup {
   sections = {
