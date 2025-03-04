@@ -27,6 +27,9 @@ exec --no-startup-id dex --autostart --environment i3
 # Wallapaper
 exec --no-startup-id feh --no-fehbg --bg-fill --fullscreen '/home/ricardo/wallpaper.jpg'
 
+# Just one screen with display port
+exec --no-startup-id xrandr --output DP-0 --primary --auto --output HDMI-0 --off
+
 # Set shotcut to change keyboard between spanish and english with ctrl+shift
 exec_always "setxkbmap -model pc105 -layout us,es -variant , -option grp:alt_shift_toggle"
 #exec "setxkbmap -layout us,es"
