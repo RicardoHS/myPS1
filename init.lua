@@ -53,6 +53,8 @@ require("lazy").setup({
 	    {'nvim-treesitter/nvim-treesitter-refactor'},
 		 {"williamboman/mason.nvim"},
 		 {"williamboman/mason-lspconfig.nvim"},
+		 {'hrsh7th/nvim-cmp'},
+		 {'hrsh7th/cmp-nvim-lsp'},
 	    {'neovim/nvim-lspconfig'},
 	    {'sindrets/diffview.nvim'},
 	    { "junegunn/fzf", build = "./install --bin" },
@@ -204,17 +206,41 @@ require("mason-lspconfig").setup({
         "clangd",        -- C/C++
         "rust_analyzer", -- Rust
         "lua_ls",        -- Lua
+		  "ts_ls",			 -- typescript
+		  "svelte"
     }
 })
 
+require'cmp'.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
+
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 require('lspconfig').ruff.setup {
+  capabilities = capabilities,
   cmd_env = { RUFF_TRACE = "messages" }
 }
-require('lspconfig').clangd.setup{}  -- Para C/C++
+require('lspconfig').clangd.setup{
+  capabilities = capabilities,
+}  -- Para C/C++
 -- Format with LSP
 vim.keymap.set('n', '<leader>f', function()
     vim.lsp.buf.format({ async = true })
 end)
+require('lspconfig').ts_ls.setup{
+  autostart = true,
+  capabilities = capabilities,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  root_dir = require('lspconfig.util').root_pattern('tsconfig.json', 'jsconfig.json', 'package.json', '.git'),
+} -- npm install -g typescript typescript-language-server
+require('lspconfig').svelte.setup{
+  capabilities = capabilities,
+}  -- Para Svelte, npm install -g svelte-language-server
+
 
 require('lualine').setup {
   sections = {
