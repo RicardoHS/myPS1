@@ -192,14 +192,14 @@ bar {
 }
 
 # Assign apps to workspaces
+assign [class="Brave-browser"] $ws1
 assign [class="Code"] $ws3
 assign [class="Spotify"] $ws5
-assign [class="Terminator"] $ws7
 
 # Autostart apps
+exec brave-browser
 exec code
 exec spotify
-exec terminator
 
 # Monitor setup: DP-0 primary, HDMI-A-1 rotated right, left of DP-0
 output DP-0 position 1080,0

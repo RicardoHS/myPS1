@@ -244,14 +244,14 @@ bar {
 }
 
 # Assign apps to workspaces
+assign [class="Brave-browser"] $ws1
 assign [class="Code"] $ws3
 assign [class="Spotify"] $ws5
-assign [class="Terminator"] $ws7
 
 # Autostart apps
+exec --no-startup-id brave-browser
 exec --no-startup-id code
 exec --no-startup-id spotify
-exec --no-startup-id terminator
 
 # Just one screen with display port
 exec --no-startup-id xrandr --output DP-0 --primary --auto --output HDMI-0 --auto --rotate right --left-of DP-0
