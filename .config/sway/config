@@ -6,22 +6,20 @@ set $mod Mod4
 
 # Font for window titles and bar
 font pango:Source Code Pro, Medium 10
+titlebar_padding 3 1
 
 # Wallpaper
 output * bg ~/wallpaper.jpg fill
 
-# Keyboard layout: switch between US and ES with alt+shift
+# Keyboard layout: US with international AltGr for accents and ñ
+# AltGr+n = ñ, AltGr+e = é, AltGr+a = á, AltGr+i = í, AltGr+o = ó, AltGr+u = ú
 input * {
-    xkb_layout us,es
-    xkb_options grp:alt_shift_toggle
+    xkb_layout us
+    xkb_variant altgr-intl
 }
 
 # Lock screen with swaylock
-exec swayidle -w \
-    timeout 300 'swaylock -f' \
-    timeout 600 'swaymsg "output * power off"' \
-    resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f'
+exec swayidle -w timeout 300 'swaylock -f' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f'
 bindsym $mod+Ctrl+l exec swaylock
 
 # NetworkManager applet
@@ -125,16 +123,16 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Workspace output assignment
-workspace $ws1 output DP-0
-workspace $ws2 output DP-0
-workspace $ws3 output DP-0
-workspace $ws4 output DP-0
-workspace $ws5 output DP-0
-workspace $ws6 output DP-0
-workspace $ws7 output HDMI-A-1
-workspace $ws8 output HDMI-A-1
-workspace $ws9 output HDMI-A-1
-workspace $ws10 output HDMI-A-1
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output HDMI-A-2
+workspace $ws8 output HDMI-A-2
+workspace $ws9 output HDMI-A-2
+workspace $ws10 output HDMI-A-2
 
 # Reload config
 bindsym $mod+Shift+c reload
@@ -197,10 +195,10 @@ assign [class="Code"] $ws3
 assign [class="Spotify"] $ws5
 
 # Autostart apps
-exec brave-browser
+exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
 exec code
 exec spotify
 
 # Monitor setup: DP-0 primary, HDMI-A-1 rotated right, left of DP-0
-output DP-0 position 1080,0
-output HDMI-A-1 transform 90 position 0,0
+output DP-1 position 1080,0
+output HDMI-A-2 transform 90 position 0,0
