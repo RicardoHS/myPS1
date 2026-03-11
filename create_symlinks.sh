@@ -13,3 +13,6 @@ ln -sf $PWD/.config/i3/config ~/.config/i3/config
 
 mkdir -p ~/.config/i3blocks/
 ln -sf $PWD/.config/i3blocks/config ~/.config/i3blocks/config
+
+mkdir -p ~/.config/sway/
+ln -sf $PWD/.config/sway/config ~/.config/sway/config
