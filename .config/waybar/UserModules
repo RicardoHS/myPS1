@@ -1,0 +1,41 @@
+//* ---- 💫 https://github.com/LinuxBeginnings 💫 ---- *//
+/* Waybar Modules Extras */
+
+/* This is where you can add Extra Modules you wish. copy.sh will try to restore*/
+/* this file along with the unique configs and styles. */
+/* IMPORTANT, be mindful with , or ". else waybar will not start */
+
+{
+"custom/gpu": {
+	"exec": "nvidia-smi --query-gpu=memory.used,memory.total,utilization.gpu,temperature.gpu --format=csv,noheader,nounits | awk -F', ' '{u=$3+0; cls=\"normal\"; if(u>=90) cls=\"critical\"; else if(u>=70) cls=\"high\"; printf \"{\\\"text\\\":\\\"%s/%sM %s%% 󰢮\\\",\\\"alt\\\":\\\"%s°C %s/%sM %s%% 󰢮\\\",\\\"class\\\":\\\"%s\\\",\\\"tooltip\\\":\\\"GPU: NVIDIA GTX 1650\\\"}\", $1, $2, $3, $4, $1, $2, $3, cls}'",
+	"return-type": "json",
+	"interval": 2,
+	"format": "{}",
+	"format-alt": "{alt}",
+	"format-alt-click": "click-right",
+	"on-click": "kitty -e nvtop"
+},
+"custom/disk-root": {
+	"exec": "df -BG / | awk 'NR==2{gsub(/G/,\"\",$3);gsub(/G/,\"\",$2);printf \"{\\\"text\\\":\\\"/ %d%% 󰋊\\\",\\\"alt\\\":\\\"/ %d/%dgb 󰋊\\\",\\\"tooltip\\\":\\\"%dGB / %dGB\\\"}\",$5,$3,$2,$3,$2}'",
+	"return-type": "json",
+	"interval": 30,
+	"format": "{}",
+	"format-alt-click": "click-right",
+	"format-alt": "{alt}",
+	"on-click": "kitty -e ncdu /"
+},
+"custom/disk-home": {
+	"exec": "df -BG /home | awk 'NR==2{gsub(/G/,\"\",$3);gsub(/G/,\"\",$2);printf \"{\\\"text\\\":\\\"~ %d%% 󰋊\\\",\\\"alt\\\":\\\"~ %d/%dgb 󰋊\\\",\\\"tooltip\\\":\\\"%dGB / %dGB\\\"}\",$5,$3,$2,$3,$2}'",
+	"return-type": "json",
+	"interval": 30,
+	"format": "{}",
+	"format-alt-click": "click-right",
+	"format-alt": "{alt}",
+	"on-click": "kitty -e ncdu /home"
+},
+"custom/separator#pipe": {
+	"format": "│",
+	"interval": "once",
+	"tooltip": false
+}
+}
