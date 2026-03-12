@@ -50,6 +50,12 @@ mkdir -p ~/.config/swaync/
 ln -sf $PWD/.config/swaync/config.json ~/.config/swaync/config.json
 ln -sf $PWD/.config/swaync/style.css ~/.config/swaync/style.css
 
+# Wlogout
+mkdir -p ~/.config/wlogout/icons/
+ln -sf $PWD/.config/wlogout/style.css ~/.config/wlogout/style.css
+ln -sf $PWD/.config/wlogout/layout ~/.config/wlogout/layout
+for f in $PWD/.config/wlogout/icons/*.svg; do ln -sf "$f" ~/.config/wlogout/icons/; done
+
 # Kitty
 mkdir -p ~/.config/kitty/
 ln -sf $PWD/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
