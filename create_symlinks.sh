@@ -22,6 +22,7 @@ mkdir -p ~/.config/hypr/UserConfigs/
 ln -sf $PWD/.config/hypr/monitors.conf ~/.config/hypr/monitors.conf
 ln -sf $PWD/.config/hypr/workspaces.conf ~/.config/hypr/workspaces.conf
 ln -sf $PWD/.config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf
+ln -sf $PWD/.config/hypr/hyprlock.conf ~/.config/hypr/hyprlock.conf
 ln -sf $PWD/.config/hypr/UserConfigs/UserSettings.conf ~/.config/hypr/UserConfigs/UserSettings.conf
 ln -sf $PWD/.config/hypr/UserConfigs/UserKeybinds.conf ~/.config/hypr/UserConfigs/UserKeybinds.conf
 ln -sf $PWD/.config/hypr/UserConfigs/UserAnimations.conf ~/.config/hypr/UserConfigs/UserAnimations.conf
