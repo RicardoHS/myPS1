@@ -48,6 +48,7 @@ Custom config on top of [JaKooLit Hyprland dotfiles](https://github.com/JaKooLit
  - `swww` - Wallpaper daemon
  - `wlogout` - Power menu
  - `sddm` - Display manager
+ - `kwin-wayland` - Wayland compositor for SDDM greeter
  - `playerctl` - Media controls
  - `btop` - System monitor
  - `nvtop` - GPU monitor
@@ -63,7 +64,7 @@ Custom config on top of [JaKooLit Hyprland dotfiles](https://github.com/JaKooLit
  - **Rofi**: Red/black theme, mouse hover disabled
  - **Swaync**: Dark red notification theme, right-aligned
  - **Wlogout**: Red/black SVG icons, 5 buttons (lock, reboot, shutdown, logout, suspend)
- - **Hyprlock**: Red/black lock screen with wallpaper background, 24h clock
+ - **Hyprlock**: Red/black lock screen, SDDM-like left panel on DP-1 (time, date, login, layout, uptime, weather), wallpaper only on HDMI-A-2
  - **Kitty**: Red/black color theme, font size 12
  - **SDDM**: Red/black theme (simple_sddm_2), JetBrainsMono font, wallpaper background
 
@@ -75,10 +76,24 @@ Some configs cannot be symlinked and need manual setup:
 ```bash
 sudo cp .config/sddm/theme.conf /usr/share/sddm/themes/simple_sddm_2/theme.conf
 sudo cp wallpaper.jpg /usr/share/sddm/themes/simple_sddm_2/Backgrounds/wallpaper.jpg
-sudo mkdir -p /etc/sddm.conf.d
-echo -e "[Theme]\nCurrent=simple_sddm_2" | sudo tee /etc/sddm.conf.d/theme.conf
 sudo systemctl enable sddm
 ```
+
+### SDDM Wayland greeter (faster startup with NVIDIA)
+```bash
+sudo tee /etc/sddm.conf.d/theme.conf << 'EOF'
+[General]
+DisplayServer=wayland
+GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell
+
+[Wayland]
+CompositorCommand=kwin_wayland --no-lockscreen --no-global-shortcuts --inputmethod maliit-keyboard
+
+[Theme]
+Current=simple_sddm_2
+EOF
+```
+Requires `kwin-wayland` package. Avoids Xorg→Wayland transition delay on NVIDIA.
 
 ### Wlogout button count
 Edit `~/.config/hypr/scripts/Wlogout.sh` and change `-b 6` to `-b 5` on all `wlogout` lines.
