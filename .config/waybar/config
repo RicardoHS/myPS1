@@ -1,5 +1,6 @@
-/* ---- 💫 https://github.com/LinuxBeginnings 💫 ---- */
+/* ---- Red/Black Waybar Config ---- */
 
+[
 // ### DEFAULT - Top ### //
 {
 "include": [
@@ -10,7 +11,6 @@
   "$HOME/.config/waybar/UserModules",
   ],
 "layer": "top",
-//"mode": "dock",
 "exclusive": true,
 "passthrough": false,
 "position": "top",
@@ -53,4 +53,32 @@
 	"group/notify",
 	"custom/power",
 	],
+},
+
+// ### HDMI-A-2 - Secondary monitor ### //
+{
+"include": [
+  "$HOME/.config/waybar/ModulesSecondary",
+  "$HOME/.config/waybar/ModulesCustom",
+  "$HOME/.config/waybar/UserModules",
+  ],
+"layer": "top",
+"exclusive": true,
+"position": "top",
+"height": 24,
+"spacing": 2,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 0,
+"margin-left": 0,
+"margin-right": 0,
+"output": "HDMI-A-2",
+
+"modules-center": [
+	"hyprland/workspaces#rw2",
+	"custom/separator#pipe",
+	"clock#secondary",
+	"custom/weather2#secondary",
+	],
 }
+]

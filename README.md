@@ -47,19 +47,63 @@ Custom config on top of [JaKooLit Hyprland dotfiles](https://github.com/JaKooLit
  - `hypridle` - Idle daemon
  - `swww` - Wallpaper daemon
  - `wlogout` - Power menu
+ - `sddm` - Display manager
  - `playerctl` - Media controls
  - `btop` - System monitor
  - `nvtop` - GPU monitor
  - `ncdu` - Disk usage analyzer
  - `blueman` - Bluetooth manager
+ - `hyprtoolkit` - Hypr ecosystem dependency (compile from source)
+ - `hyprland-guiutils` - Hypr GUI dialogs (compile from source)
 
 ## What's included
 
- - **Hyprland**: Dual monitor setup (DP-1 primary + HDMI-A-2 rotated vertical), workspace assignments, window rules, keybinds, US altgr-intl keyboard layout
- - **Waybar**: Red/black theme, custom modules (GPU via nvidia-smi, dual disk partitions, Debian apt updater), grouped drawers for network/bluetooth/keyboard
- - **Rofi**: Red/black theme matching Waybar
+ - **Hyprland**: Dual monitor setup (DP-1 2560x1440 primary + HDMI-A-2 1920x1080 rotated vertical), workspace assignments (1-6 on DP-1, 7-10 on HDMI-A-2), window rules, keybinds (close=Mod+Shift+Q, fullscreen=Mod+F, float=Mod+Shift+Space, refresh=Mod+Shift+R, power=Mod+Backspace), US altgr-intl + ES keyboard layouts, cursor default on DP-1
+ - **Waybar**: Red/black (#aa3333) theme, dual bar (full on DP-1, workspaces+clock on HDMI-A-2), custom modules (GPU via nvidia-smi, dual disk partitions, Debian apt updater), grouped drawers for network/bluetooth/keyboard
+ - **Rofi**: Red/black theme, mouse hover disabled
  - **Swaync**: Dark red notification theme, right-aligned
- - **Kitty**: Font size 12
+ - **Wlogout**: Red/black SVG icons, 5 buttons (lock, reboot, shutdown, logout, suspend)
+ - **Hyprlock**: Red/black lock screen with wallpaper background, 24h clock
+ - **Kitty**: Red/black color theme, font size 12
+ - **SDDM**: Red/black theme (simple_sddm_2), JetBrainsMono font, wallpaper background
+
+## Manual steps after symlinks
+
+Some configs cannot be symlinked and need manual setup:
+
+### SDDM theme
+```bash
+sudo cp .config/sddm/theme.conf /usr/share/sddm/themes/simple_sddm_2/theme.conf
+sudo cp wallpaper.jpg /usr/share/sddm/themes/simple_sddm_2/Backgrounds/wallpaper.jpg
+sudo mkdir -p /etc/sddm.conf.d
+echo -e "[Theme]\nCurrent=simple_sddm_2" | sudo tee /etc/sddm.conf.d/theme.conf
+sudo systemctl enable sddm
+```
+
+### Wlogout button count
+Edit `~/.config/hypr/scripts/Wlogout.sh` and change `-b 6` to `-b 5` on all `wlogout` lines.
+
+### SDDM monitor focus
+To make SDDM show on the primary monitor:
+```bash
+sudo tee /etc/X11/xorg.conf.d/10-monitor.conf << 'EOF'
+Section "Monitor"
+    Identifier "HDMI-A-2"
+    Option "Primary" "false"
+EndSection
+Section "Monitor"
+    Identifier "DP-1"
+    Option "Primary" "true"
+EndSection
+EOF
+```
+
+### PATH for SDDM sessions
+SDDM doesn't load `.profile`. Add to `~/.zshenv`:
+```bash
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+```
 
 ## NVIDIA Wayland env vars
 

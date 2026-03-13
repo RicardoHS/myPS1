@@ -9,8 +9,8 @@ configuration {
     display-window:             "  window";
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
-    hover-select:               true;
-    me-select-entry:            "MouseSecondary";
+    hover-select:               false;
+    me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
 }
 

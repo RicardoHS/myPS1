@@ -71,8 +71,11 @@ tooltip label {
     padding: 0 8px;
 }
 
-#workspaces button.visible {
-    color: #aa3333;
+#workspaces button.visible,
+#workspaces button.visible * {
+    color: #ffffff;
+    background-color: #aa3333;
+    padding: 0 8px;
 }
 
 #workspaces button.urgent {

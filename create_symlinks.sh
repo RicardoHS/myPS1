@@ -38,6 +38,7 @@ ln -sf $PWD/.config/waybar/ModulesCustom ~/.config/waybar/ModulesCustom
 ln -sf $PWD/.config/waybar/ModulesGroups ~/.config/waybar/ModulesGroups
 ln -sf $PWD/.config/waybar/ModulesWorkspaces ~/.config/waybar/ModulesWorkspaces
 ln -sf $PWD/.config/waybar/UserModules ~/.config/waybar/UserModules
+ln -sf $PWD/.config/waybar/ModulesSecondary ~/.config/waybar/ModulesSecondary
 
 # Rofi
 mkdir -p ~/.config/rofi/themes/
@@ -59,6 +60,7 @@ for f in $PWD/.config/wlogout/icons/*.svg; do ln -sf "$f" ~/.config/wlogout/icon
 # Kitty
 mkdir -p ~/.config/kitty/
 ln -sf $PWD/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -sf $PWD/.config/kitty/red-dark.conf ~/.config/kitty/red-dark.conf
 
 # Wallpaper
 ln -sf $PWD/wallpaper.jpg ~/wallpaper.jpg
